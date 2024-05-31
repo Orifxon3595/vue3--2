@@ -1,0 +1,91 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .box {
+        width: 400px;
+        height: 200px;
+        line-height: 200px;
+        font-size: xx-large;
+        background-color: cadetblue;
+        text-align: center;
+        margin: 20px;
+        display: inline-block;
+      }
+      body{
+        background-color: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      p, h3, ul {
+        margin: 0;
+        padding: 0;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      li{
+        list-style-type: none;
+        background: #fff;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .fav {
+        background: pink;
+        color: #fff;
+      }
+      .liked{
+        background-color: deeppink;
+        color: #fff;
+        border: none;
+        padding: 4px 8px;
+        margin: 5px;
+      }
+      .unliked{
+        background-color: rgb(114, 132, 146);
+        color: #fff;
+        border: none;
+        padding: 4px 8px;
+        margin: 5px;
+      }
+    </style>
+    <title>Vue 3 #2</title>
+  </head>
+  <body>
+    <h1>Hello Vue :)</h1>
+
+    <div id="app">
+      <div v-if="showBooks">
+        <ul>
+          <li @click="handleClick($event)" v-for="book in books" v-bind:class="{ fav: book.isFav}">
+            <img :src="book.img" :alt="book.img">
+            <h1>{{book.title}}</h1>
+            <p>{{book.author}}</p>
+            <!-- <div>
+              <button @click="handleClick($event)" class="liked">Liked</button>
+              <button @click="handleClick($event)" class="unliked">Unliked</button>
+            </div> -->
+          </li>
+        </ul>
+        <button v-on:click="age++">Incrument</button>
+        <button v-on:click="age--">Decrument</button>
+      </div>
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else>Show Books</span></button
+      ><br />
+      <div class="box" @mouseover="handleEvent($event, 5)">mouseover</div>
+      <div class="box" @mouseleave="handleEvent">mouseleave</div>
+      <div class="box" @dblclick="handleEvent">dable click</div>
+      <div class="box" @mousemove="handleMousemove">x: {{x}} y: {{y}}</div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
